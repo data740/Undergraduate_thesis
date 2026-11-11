@@ -1,0 +1,30 @@
+max_blocks: 10
+#retnet:
+#  _target_: models.RetNetConfig
+#  max_blocks: 10
+#  num_layers: 10
+#  num_heads: 4
+#  embed_dim: 256
+#  dropout: 0.1
+#  blocks_per_chunk: 5
+#  mask_type: 'autoregressive'
+#  decay_scale_min_num_blocks: 4
+#  decay_scale_max_num_blocks: 16
+transformer:
+  _target_: models.TransformerConfig
+  max_blocks: 10
+  num_layers: 10
+  num_heads: 4
+  embed_dim: 256
+  dropout: 0.1
+  blocks_per_chunk: 5
+  pos_enc: rotary
+  pred_self_mask: causal
+  pred_pass_mode: batched
+context_length: 2
+compute_states_parallel: True
+shared_embeddings: True
+obs_emb_dim: 256
+shared_prediction_token: False
+enable_curiosity: True
+curiosity_ensemble_size: 4
